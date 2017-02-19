@@ -6,12 +6,12 @@ Author:  "Kevin Urbina"
 
 
 ## Loading and preprocessing the data
-### Download and unzip file, then upload the file into R 
-
+#### Download and unzip file, then upload the file into R 
+''' 
 library(readr)
 activity <- read_csv("~/DataScience/Rep Research/activity.csv")
 View(activity)
-
+'''
 ## What is mean total number of steps taken per day?
 
 
