@@ -1,6 +1,6 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-output: Analysis of Bitfit data
+output: "Analysis of Bitfit data"
   html_document:
     keep_md: true
 ---
@@ -8,10 +8,11 @@ output: Analysis of Bitfit data
 
 ## Loading and preprocessing the data
 ### Download and unzip file, then upload the file into R 
+---
 library(readr)
 activity <- read_csv("~/DataScience/Rep Research/activity.csv")
 View(activity)
-
+---
 ## What is mean total number of steps taken per day?
 
 
