@@ -25,12 +25,15 @@ clean <- activity[!is.na(activity$steps),]
 ## What is mean total number of steps taken per day?
 
 #### Sum Steps by day and makes and histogram
-
+```
 stepsbyday <- aggregate(steps ~ date, activity, sum)
 hist(stepsbyday$steps, main = paste("Total Steps Per Day"), col="red", xlab="Count of Steps")
+```
 #### Calculating mean and median of steps per day
+```
 rmean <- mean(stepsbyday$steps)
 rmedian <- median(stepsbyday$steps)
+```
 
 ## What is the average daily activity pattern?
 
