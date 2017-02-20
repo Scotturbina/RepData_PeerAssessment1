@@ -36,7 +36,19 @@ rmedian <- median(stepsbyday$steps)
 ```
 
 ## What is the average daily activity pattern?
-
+#### Take the invertal mean steps
+```
+stepsinterval <- aggregate(steps ~ interval, activity, mean)
+```
+#### Plot the mean interval
+```
+plot(stepsinterval$interval,stepsinterval$steps, type="l", xlab="Interval", ylab="Number of Steps",main="Average Number of Steps per Day Interval", col="blue")
+```
+#### Take the maximun interval
+```
+max_interval <- stepsinterval[which.max(stepsinterval$steps),1]
+max_interval
+```
 
 
 ## Imputing missing values
