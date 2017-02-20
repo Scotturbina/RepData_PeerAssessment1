@@ -53,6 +53,23 @@ max_interval
 
 ## Imputing missing values
 
-
+####Find incomplete cases and sum
+```
+incomp <- sum(!complete.cases(activity))
+imputeddat <- transform(activity, steps = ifelse(is.na(activity$steps), stepsinterval$steps[match(activity$interval, stepsinterval$interval)], activity$steps))
+imputeddat[as.character(imputeddat$date) == "2012-10-01", 1] <- 0
+```
+#### Re count steps and creates an histogram
+```
+stepsbydayi <- aggregate(steps ~ date, imputeddat, sum)
+hist(stepsbydayi$steps, main = paste("Total Steps Each Day"), col="blue", xlab="Number of Steps")
+```
+####Create Histogram to show difference.
+```
+hist(stepsbyday_i$steps, main = paste("Total Steps of Each Day"), col="blue", xlab="count of Steps", add=T)
+legend("topright", c("Imputed", "Non-imputed"), col=c("blue", "red"), lwd=10)
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+
