@@ -69,7 +69,33 @@ hist(stepsbydayi$steps, main = paste("Total Steps Each Day"), col="blue", xlab="
 hist(stepsbyday_i$steps, main = paste("Total Steps of Each Day"), col="blue", xlab="count of Steps", add=T)
 legend("topright", c("Imputed", "Non-imputed"), col=c("blue", "red"), lwd=10)
 ```
+####Calcute media and mean for imputed data
+```
+rmean.i <- mean(stepsbydayi$steps)
+rmedian.i <- median(stepsbydayi$steps)
+```
 
+####calculate diffence between inputed and non imputed data
+```
+mean_diff <- rmean.i - rmean
+med_diff <- rmedian.i - rmedian
+```
 ## Are there differences in activity patterns between weekdays and weekends?
+
+####compare average steps by interval by weekend and weekday
+```
+weekdays <- c("Monday", "Tuesday", "Wednesday", "Thursday", 
+              "Friday")
+imputeddat$dow = as.factor(ifelse(is.element(weekdays(as.Date(imputeddat$date)),weekdays), "Weekday", "Weekend"))
+
+stepsbyintervali <- aggregate(steps ~ interval + dow, imputeddat, mean)
+```
+####Plot the comparison
+```
+require(lattice)
+
+xyplot(stepsbyintervali$steps ~ stepsbyintervali$interval|stepsbyintervali$dow, main="Average Steps per Day by Interval",xlab="Interval", ylab="Number Steps",layout=c(1,2), type="l")
+```
+
 
 
