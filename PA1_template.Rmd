@@ -1,7 +1,6 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-Author:  "Kevin Urbina" 
-  
+output: html_document 
 ---
 
 
@@ -29,9 +28,7 @@ clean <- activity[!is.na(activity$steps),]
 stepsbyday <- aggregate(steps ~ date, activity, sum)
 hist(stepsbyday$steps, main = paste("Total Steps Per Day"), col="red", xlab="Count of Steps")
 ```
-``` {r echo = FALSE}
-hist(stepsbyday$steps, main = paste("Total Steps Per Day"), col="red", xlab="Count of Steps")
-```
+
 #### Calculating mean and median of steps per day
 ```
 rmean <- mean(stepsbyday$steps)
@@ -72,6 +69,7 @@ hist(stepsbydayi$steps, main = paste("Total Steps Each Day"), col="blue", xlab="
 hist(stepsbyday_i$steps, main = paste("Total Steps of Each Day"), col="blue", xlab="count of Steps", add=T)
 legend("topright", c("Imputed", "Non-imputed"), col=c("blue", "red"), lwd=10)
 ```
+![] (https://github.com/Scotturbina/RepData_PeerAssessment1/blob/master/instructions_fig/total%20steps%20each%20day.png)
 ####Calcute media and mean for imputed data
 ```
 rmean.i <- mean(stepsbydayi$steps)
