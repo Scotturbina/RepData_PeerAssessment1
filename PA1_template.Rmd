@@ -29,6 +29,9 @@ clean <- activity[!is.na(activity$steps),]
 stepsbyday <- aggregate(steps ~ date, activity, sum)
 hist(stepsbyday$steps, main = paste("Total Steps Per Day"), col="red", xlab="Count of Steps")
 ```
+``` {r echo = FALSE}
+hist(stepsbyday$steps, main = paste("Total Steps Per Day"), col="red", xlab="Count of Steps")
+```
 #### Calculating mean and median of steps per day
 ```
 rmean <- mean(stepsbyday$steps)
