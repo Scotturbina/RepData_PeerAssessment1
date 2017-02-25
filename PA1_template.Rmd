@@ -36,6 +36,8 @@ rmean <- mean(stepsbyday$steps)
 rmedian <- median(stepsbyday$steps)
 ```
 
+#### The mean is 10766.19 and the median is 10765
+
 ## What is the average daily activity pattern?
 #### Take the invertal mean steps
 ```
@@ -51,7 +53,7 @@ plot(stepsinterval$interval,stepsinterval$steps, type="l", xlab="Interval", ylab
 max_interval <- stepsinterval[which.max(stepsinterval$steps),1]
 max_interval
 ```
-
+#### The max interval is 835
 
 ## Imputing missing values
 
@@ -66,23 +68,27 @@ imputeddat[as.character(imputeddat$date) == "2012-10-01", 1] <- 0
 stepsbydayi <- aggregate(steps ~ date, imputeddat, sum)
 hist(stepsbydayi$steps, main = paste("Total Steps Each Day"), col="blue", xlab="Number of Steps")
 ```
+
 ####Create Histogram to show difference.
 ```
-hist(stepsbyday_i$steps, main = paste("Total Steps of Each Day"), col="blue", xlab="count of Steps", add=T)
+hist(stepsbydayi$steps, main = paste("Total Steps of Each Day"), col="blue", xlab="count of Steps", add=T)
 legend("topright", c("Imputed", "Non-imputed"), col=c("blue", "red"), lwd=10)
 ```
+! [] (https://github.com/Scotturbina/RepData_PeerAssessment1/blob/master/instructions_fig/NA%20steps.png)
 
 ####Calcute media and mean for imputed data
 ```
 rmean.i <- mean(stepsbydayi$steps)
 rmedian.i <- median(stepsbydayi$steps)
 ```
+#### The mean is 10589.69, the median is 10766.19
 
 ####calculate diffence between inputed and non imputed data
 ```
 mean_diff <- rmean.i - rmean
 med_diff <- rmedian.i - rmedian
 ```
+#### The difference between the non-imputed mean and imputed mean is -176.4949 and the difference between non-imputed median and imputed median is 1.188679
 ## Are there differences in activity patterns between weekdays and weekends?
 
 ####compare average steps by interval by weekend and weekday
@@ -99,6 +105,7 @@ require(lattice)
 
 xyplot(stepsbyintervali$steps ~ stepsbyintervali$interval|stepsbyintervali$dow, main="Average Steps per Day by Interval",xlab="Interval", ylab="Number Steps",layout=c(1,2), type="l")
 ```
+![] (https://github.com/Scotturbina/RepData_PeerAssessment1/blob/master/instructions_fig/average%20step%20by%20interval%20day.png)
 
 
 
